@@ -1,0 +1,189 @@
+﻿    <openerp>
+    <data>
+
+        <record id="recrutement_candidat_form" model="ir.ui.view">
+            <field name="name">Candidat</field>
+            <field name="model">recrutement.candidat</field>
+            <field name="arch" type="xml">
+
+                <form string="Candidat">
+                <h2>  Informations du candidat</h2><br/>
+
+
+                    <notebook>
+
+                        <page string="Informations Generales">
+                        <br/>
+                        <h3>Informations  générales du candidat</h3>
+                        <br/>
+                            <group>
+
+                                <!--<field name="country_id" eval="ref('res.country')"/>-->
+                                <field name="situation" />
+                                <field name="fonction" />
+                                <field name="mobilite" />
+                                <field name="date_disp" />
+                                <field name="permet_cond" />
+                                <field name="contrat" />
+                            </group>
+                        </page>
+                        <page string="Compétences">
+                        <br/>
+                        <h3> Informations sur les compétences du candidat</h3>
+                        <br/>
+                            <group>
+                                <field name="domaine_ids" />
+                                <field name="langue_ids" />
+                                <field name="logiciel_ids" />
+                                <field name="langage_ids" />
+                            </group>
+                        </page>
+                    </notebook>
+                </form>
+
+            </field>
+        </record>
+
+		<!-- Tree candidat -->
+        <record id="recrutement_candidat_tree" model="ir.ui.view">
+            <field name="name">Candidat</field>
+            <field name="model">recrutement.candidat</field>
+            <field name="arch" type="xml">
+                <tree string="Candidat">
+                    <field name="situation" />
+                    <field name="fonction" />
+                    <field name="mobilite" />
+                    <field name="date_disp" />
+					<field name="permet_cond" />
+					<field name="contrat" />
+<!--					<field name="domaine_ids" />  -->
+<!--					<field name="langue_ids" />		-->
+<!--					<field name="logiciel_ids" />	-->
+<!--					<field name="langage_ids" />	-->
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action Candidat view-->
+        <record id="recrutement_candidat_view_form" model="ir.actions.act_window">
+            <field name="name" >Candidat action view</field>
+            <field name="res_model">recrutement.candidat</field>
+            <field name="view_mode">form,tree</field>
+        </record>
+
+
+
+
+		<!-- Form Domaines -->
+        <record id="recrutement_domaine_form" model="ir.ui.view">
+            <field name="name">Domaines</field>
+            <field name="model">recrutement.domaine</field>
+            <field name="arch" type="xml">
+                <form string="Domaine">
+                    <sheet>
+                        <group>
+                            <field name="nom" />
+							<field name="annee_exp" />
+							<field name="niveau" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+		<!-- Tree domaines-->
+        <record id="recrutement_domaine_tree" model="ir.ui.view">
+            <field name="name">Domaine</field>
+            <field name="model">recrutement.domaine</field>
+            <field name="arch" type="xml">
+                <tree string="Domaine">
+                    <field name="nom" />
+					<field name="annee_exp" />
+					<field name="niveau" />
+                </tree>
+            </field>
+        </record>
+
+		<!-- Form Logiciel -->
+        <record id="recrutement_logiciel_form" model="ir.ui.view">
+            <field name="name">Logiciels</field>
+            <field name="model">recrutement.logiciel</field>
+            <field name="arch" type="xml">
+                <form string="Logiciel">
+                    <sheet>
+                        <group>
+                            <field name="nom" />
+							<field name="niveau" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+		<!-- Form Langues -->
+        <record id="recrutement_langue_form" model="ir.ui.view">
+            <field name="name">Langues</field>
+            <field name="model">recrutement.langue</field>
+            <field name="arch" type="xml">
+                <form string="Langue">
+                    <sheet>
+                        <group>
+                            <field name="nom" />
+							<field name="niveau" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+		<!-- Tree Langues-->
+        <record id="recrutement_langue_tree" model="ir.ui.view">
+            <field name="name">Langues</field>
+            <field name="model">recrutement.langue</field>
+            <field name="arch" type="xml">
+                <tree string="Langue">
+                    <field name="nom" />
+					<field name="niveau" />
+                </tree>
+            </field>
+        </record>
+
+		<!-- Form langage_programmation -->
+        <record id="recrutement_langage_prog_form" model="ir.ui.view">
+            <field name="name">Langage de programmation</field>
+            <field name="model">recrutement.langage_prog</field>
+            <field name="arch" type="xml">
+                <form string="Langage de programmation">
+                    <sheet>
+                        <group>
+                            <field name="nom" />
+							<field name="niveau" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		<!-- Tree langage_programmation-->
+        <record id="recrutement_langage_prog_tree" model="ir.ui.view">
+            <field name="name">Langage de programmation</field>
+            <field name="model">recrutement.langage_prog</field>
+            <field name="arch" type="xml">
+                <tree string="Langage de programmation">
+                    <field name="nom" />
+					<field name="niveau" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Menu Principal -->
+        <!--<menuitem name="Recrutement" id="recrutement_candidat_main_menu" sequence="85"/>-->
+
+		<!-- Menu Candidatures -->
+		<menuitem name="Candidatures" id="recrutement_candidat_menu" parent="hr.menu_hr_root" sequence="11" />
+        <menuitem name="les candidats" id="recrutement_candidat_info" parent="recrutement_candidat_menu" sequence="12"
+		action="recrutement_candidat_view_form"/>
+
+
+
+    </data>
+</openerp>
